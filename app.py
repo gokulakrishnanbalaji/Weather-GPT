@@ -1,18 +1,20 @@
 import requests
 from datetime import datetime, timedelta
 
+ # Make a request to the OpenWeatherMap API to retrieve the weather forecast by returning a json data
 def get_weather_forecast(city_name, api_key):
-    # Make a request to the OpenWeatherMap API to retrieve the weather forecast
     base_url = "http://api.openweathermap.org/data/2.5/forecast"
     params = {
         "q": city_name,  # Specify the city name for the forecast
         "appid": api_key,  # Include your OpenWeatherMap API key
         "units": "metric"  # Use metric units for temperature
     }
-    response = requests.get(base_url, params=params)  # Send the API request
-    weather_data = response.json()  # Parse the response as JSON
+# Send the API request
+    response = requests.get(base_url, params=params) 
+# Parse the response as JSON
+    weather_data = response.json()  
 
-    # Extract the relevant weather information from the API response
+    # Extract the relevant weather information from the API response like date temeperaute and other features
     forecast = []
     for prediction in weather_data["list"]:
         forecast.append({
@@ -24,6 +26,8 @@ def get_weather_forecast(city_name, api_key):
         })
     return forecast
 
+
+#print weather forecast
 def print_weather_forecast(forecast):
 
 #print the forecast header for the five days along with details in a for loop
@@ -43,6 +47,7 @@ def print_weather_forecast(forecast):
     print("-" * 68)
 
 
+#give the main function
 def main():
     # Enter your OpenWeatherMap API key here
     api_key = '2fd12545a95e925217919cfe171a10a6'
@@ -56,5 +61,5 @@ def main():
     # Print the forecast to the screen
     print_weather_forecast(forecast)
 
-if _name_ == '_main_':
+if name == 'main':
     main()
