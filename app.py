@@ -61,5 +61,5 @@ def main():
     # Print the forecast to the screen
     print_weather_forecast(forecast)
 
-if name == 'main':
+if __name__ == '__main__':
     main()
